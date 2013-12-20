@@ -34,6 +34,10 @@
 }
 
 - (void)showCamera {
+    self.mLabelAddress.text = @"定位中";
+    [LocationManager defaultManager].delegate = self;
+    [[LocationManager defaultManager] startStandardLocationServcie];
+
     UIImagePickerController * imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.delegate = self;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -73,8 +77,6 @@
     [self initRestaurant];
     [self initUser];
     
-    [LocationManager defaultManager].delegate = self;
-    [[LocationManager defaultManager] startStandardLocationServcie];
 }
 
 - (void)didReceiveMemoryWarning
