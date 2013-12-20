@@ -11,7 +11,7 @@
 #import "ASIFormDataRequest.h"
 #import "JSONKit.h"
 
-#define ROOT_URL @"http://192.168.10.112/"
+#define ROOT_URL @"http://www.laotangguan.com/"
 
 @protocol BaseOperationDelegate;
 
