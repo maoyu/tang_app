@@ -13,4 +13,6 @@
 
 - (id)initWithRestaurant:(Restaurant *)restaurant;
 
+@property (nonatomic, strong) Restaurant * restaurant;
+
 @end

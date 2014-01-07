@@ -1,0 +1,36 @@
+
+/* Class = "IBUINavigationItem"; title = "餐馆上传"; ObjectID = "3mD-ps-tef"; */
+"3mD-ps-tef.title" = "餐馆上传";
+
+/* Class = "IBUINavigationItem"; title = "添加餐馆"; ObjectID = "4ea-7F-cf8"; */
+"4ea-7F-cf8.title" = "添加餐馆";
+
+/* Class = "IBUIBarButtonItem"; title = "全部上传"; ObjectID = "Hci-id-hOL"; */
+"Hci-id-hOL.title" = "全部上传";
+
+/* Class = "IBUINavigationItem"; title = "个人中心"; ObjectID = "Iap-c8-rxH"; */
+"Iap-c8-rxH.title" = "个人中心";
+
+/* Class = "IBUIViewController"; title = "Second"; ObjectID = "QUy-BD-bpt"; */
+"QUy-BD-bpt.title" = "Second";
+
+/* Class = "IBUIBarButtonItem"; title = "取消"; ObjectID = "SDJ-w2-LLj"; */
+"SDJ-w2-LLj.title" = "取消";
+
+/* Class = "IBUITabBarItem"; title = "个人"; ObjectID = "Z7h-1E-pvt"; */
+"Z7h-1E-pvt.title" = "个人";
+
+/* Class = "IBUITextField"; placeholder = "请输入用户信息"; ObjectID = "fJN-lN-HWB"; */
+"fJN-lN-HWB.placeholder" = "请输入用户信息";
+
+/* Class = "IBUIBarButtonItem"; title = "设置"; ObjectID = "jgi-Zs-anv"; */
+"jgi-Zs-anv.title" = "设置";
+
+/* Class = "IBUIButton"; normalTitle = "保存"; ObjectID = "jxr-e8-Bqo"; */
+"jxr-e8-Bqo.normalTitle" = "保存";
+
+/* Class = "IBUITabBarItem"; title = "添加餐馆"; ObjectID = "lUK-5d-tdl"; */
+"lUK-5d-tdl.title" = "添加餐馆";
+
+/* Class = "IBUIBarButtonItem"; title = "上传"; ObjectID = "pe4-2R-Aex"; */
+"pe4-2R-Aex.title" = "上传";

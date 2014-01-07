@@ -6,32 +6,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "tang/CreateRestaurantOperation.m"
-            timestampString = "409139957.579863"
+            filePath = "tang/UploadRestaurantManager.m"
+            timestampString = "410755581.378722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-requestDidFinish:"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-didFailed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "tang/CreateRestaurantViewController.m"
-            timestampString = "409209716.917033"
+            filePath = "tang/UploadRestaurantController.m"
+            timestampString = "410757763.43078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-createRestaurant:"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-uploadFailed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tang/UploadRestaurantController.m"
+            timestampString = "410757763.43078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-uploadFinished"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

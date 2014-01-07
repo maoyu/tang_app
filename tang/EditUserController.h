@@ -13,5 +13,6 @@
 @property (nonatomic, weak) IBOutlet UITextField * mTextUserName;
 
 - (IBAction)editUserName:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end

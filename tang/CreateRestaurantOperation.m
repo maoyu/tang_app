@@ -9,7 +9,7 @@
 #import "CreateRestaurantOperation.h"
 
 @interface CreateRestaurantOperation () {
-    Restaurant * _restaurant;
+
 }
 
 @end
@@ -18,7 +18,7 @@
 
 - (id)initWithRestaurant:(Restaurant *)restaurant {
     if (self = [super initWithCurrentLoggedInUser]) {
-        _restaurant = restaurant;
+        self.restaurant = restaurant;
     }
     
     return self;
@@ -28,13 +28,23 @@
     NSString * strUrl = [NSString stringWithFormat:@"%@%@", ROOT_URL, @"restaurant/create"];
     
     ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:strUrl]];
-    [request setPostValue:_restaurant.name forKey:@"Restaurant[name]"];
-    [request setPostValue:_restaurant.phone forKey:@"Restaurant[phone]"];
-    [request setPostValue:_restaurant.address forKey:@"Restaurant[address]"];
-    [request setPostValue:_restaurant.coordinate forKey:@"Restaurant[coordinate]"];
-    [request setPostValue:_restaurant.description forKey:@"Restaurant[description]"];
+    [request setPostValue:self.restaurant.name forKey:@"Restaurant[name]"];
+    [request setPostValue:self.restaurant.phone forKey:@"Restaurant[phone]"];
+    [request setPostValue:self.restaurant.address forKey:@"Restaurant[address]"];
+    [request setPostValue:[NSNumber numberWithInteger:self.restaurant.typeId] forKey:@"Restaurant[type_id]"];
+    [request setPostValue:[NSNumber numberWithInteger:self.restaurant.countyId] forKey:@"Restaurant[county_id]"];
+    [request setPostValue:self.restaurant.coordinate forKey:@"Restaurant[coordinate]"];
+    [request setPostValue:self.restaurant.description forKey:@"Restaurant[description]"];
     [request setPostValue:@"1" forKey:@"Json"];
-    [request setData:_restaurant.image withFileName:@"maoyu.jpg" andContentType:nil forKey:@"Restaurant[image_url]"];
+    if (nil != self.restaurant.images && [self.restaurant.images count] > 0) {
+        NSInteger size = [self.restaurant.images count];
+        NSString * filename;
+        for (NSInteger index = 0; index < size; index++) {
+            filename = [self.restaurant.images objectAtIndex:index];
+            [request setData:[[FileManager defaultManager] getImageDataWithFilename:filename] withFileName:filename andContentType:nil forKey:@"Restaurant[image_url]"];
+        }
+    }
+    
     [request setUserInfo:[NSDictionary dictionaryWithObject:@"createRestaurant" forKey:@"request"]];
     
     return request;
@@ -54,5 +64,9 @@
             }
         }
     }
+}
+
+- (void)requestDidFail:(ASIHTTPRequest *)request {
+    [self.delegate didFailed:self];
 }
 @end
