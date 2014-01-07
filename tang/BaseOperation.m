@@ -55,6 +55,7 @@
     _networkQueue.maxConcurrentOperationCount = 1;
     _networkQueue.delegate = self;
     [_networkQueue setRequestDidFinishSelector:@selector(requestDidFinish:)];
+    [_networkQueue setRequestDidFailSelector:@selector(requestDidFail:)];
 }
 
 #pragma 类成员函数
@@ -85,6 +86,11 @@
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
     
+}
+
+- (void)requestDidFail:(ASIHTTPRequest *)request {
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 @end

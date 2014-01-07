@@ -10,7 +10,9 @@
 #import "ASINetworkQueue.h"
 #import "ASIFormDataRequest.h"
 #import "JSONKit.h"
+#import "FileManager.h"
 
+//#define ROOT_URL @"http://192.168.10.103/"
 #define ROOT_URL @"http://www.laotangguan.com/"
 
 @protocol BaseOperationDelegate;
@@ -23,6 +25,7 @@
 
 - (ASIHTTPRequest *)createRequest;
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
+- (void)requestDidFail:(ASIHTTPRequest *)request;
 
 - (id)initWithCurrentLoggedInUser;
 

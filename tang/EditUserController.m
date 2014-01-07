@@ -30,6 +30,11 @@
 	
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.mTextUserName becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -42,6 +47,10 @@
     [user save];
     [User setCurrentUser:user];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
