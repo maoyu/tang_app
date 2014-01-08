@@ -12,6 +12,7 @@
 #import "MBProgressManager.h"
 #import "RestaurantType.h"
 #import "County.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #define RGBRatio(x)             ((CGFloat)x / 255)
 #define RGBColor(r, g, b)       [UIColor colorWithRed:RGBRatio(r) green:RGBRatio(g) blue:RGBRatio(b) alpha:1.0]
@@ -41,6 +42,16 @@
     self.tableView.tableFooterView = view;
 }
 
+- (void)showActionSheet {
+    UIActionSheet * menu = [[UIActionSheet alloc]
+                            initWithTitle:nil delegate:self
+                            cancelButtonTitle:@"取消"
+                            destructiveButtonTitle:nil
+                            otherButtonTitles:@"用户相册", @"相机", nil];
+    
+    [menu showInView:[UIApplication sharedApplication].keyWindow];
+}
+
 - (void)showCamera {
     [LocationManager defaultManager].delegate = self;
     [[LocationManager defaultManager] startStandardLocationServcie];
@@ -52,6 +63,16 @@
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePickerController.allowsEditing = YES;
         [self presentViewController:imagePickerController animated:YES completion:NULL];
+    }
+}
+
+- (void)showPhotoAlbum {
+    UIImagePickerController * imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerController.allowsEditing = YES;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
     }
 }
 
@@ -180,9 +201,28 @@
 }
 
 #pragma mark - ImagePicker delegate
+/*
+ 数据源来自相册时，读出照片的位置信息
+ */
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString * filename = [[FileManager defaultManager] addImage:[info valueForKey:UIImagePickerControllerEditedImage]];
+    
+    if (UIImagePickerControllerSourceTypePhotoLibrary == picker.sourceType) {
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        NSURL *url = [info objectForKey:UIImagePickerControllerReferenceURL];
+        
+        [library assetForURL:url resultBlock:^(ALAsset *asset) {
+            CLLocation * location = [asset valueForProperty:ALAssetPropertyLocation];
+            if (nil != location) {
+                [LocationManager defaultManager].delegate = self;
+                [[LocationManager defaultManager] getPlacemarks:location];
+            }
+        } failureBlock:^(NSError *error) {
+            
+        }];
+    }
+    
     if (nil != filename) {
         [self.restaurnt addImage:filename];
         [_editImageCell addImage:filename];
@@ -307,10 +347,20 @@
     }
 }
 
+#pragma mark - ActionSheet view delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0) {
+        [self showPhotoAlbum];
+    }else if(buttonIndex == 1){
+        [self showCamera];
+    }
+}
+
 #pragma EditImagesCellDelegate
 - (void)clickAddImage {
     if (EditModeAdd == self.editMode) {
-        [self showCamera];
+        [self showActionSheet];
     }
 }
 

@@ -50,8 +50,23 @@ static LocationManager * sLocationManager;
     [self.locationManager stopUpdatingLocation];
 }
 
-- (void)getAdressWithCoordinate:(CLLocationCoordinate2D) coordinate{
-    
+- (void)getPlacemarks:(CLLocation *)location {
+    CLLocation * changeLocation = [[CLLocation alloc] initWithLatitude:[location coordinate].latitude - 0.0011 longitude:[location coordinate].longitude + 0.006 ];
+
+    [_reverseGeocoder reverseGeocodeLocation:changeLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSMutableDictionary * locations = [[NSMutableDictionary alloc] initWithCapacity:0];
+        if (error){
+            NSLog(@"Geocode failed with error: %@", error);
+            return;
+        }
+        
+        [locations setValue:location forKey:@"location"];
+        [locations setValue:placemarks forKey:@"placemarks"];
+        if (_delegate != nil && [_delegate respondsToSelector:@selector(receivedLocation:)]) {
+            [_delegate performSelector:@selector(receivedLocation:) withObject:locations];
+        }
+        
+    }];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -59,23 +74,7 @@ static LocationManager * sLocationManager;
     NSDate * date = newLocation.timestamp;
     NSTimeInterval howRecent = [date timeIntervalSinceNow];
     if (abs(howRecent) < 5) {
-        NSMutableDictionary * locations = [[NSMutableDictionary alloc] initWithCapacity:0];
-        CLLocation * changeLocation = [[CLLocation alloc] initWithLatitude:[newLocation coordinate].latitude - 0.0011 longitude:[newLocation coordinate].longitude + 0.006 ];
-        //获取位置信息
-        [_reverseGeocoder reverseGeocodeLocation:changeLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-            NSLog(@"reverseGeocodeLocation:completionHandler: Completion Handler called!");
-            if (error){
-                NSLog(@"Geocode failed with error: %@", error);
-                return;
-            }
-            NSLog(@"Received placemarks: %@", placemarks);
-            [locations setValue:changeLocation forKey:@"location"];
-            [locations setValue:placemarks forKey:@"placemarks"];
-            if (_delegate != nil && [_delegate respondsToSelector:@selector(receivedLocation:)]) {
-                [_delegate performSelector:@selector(receivedLocation:) withObject:locations];
-            }
-
-        }];
+        [self getPlacemarks:newLocation];
         [self stopStandardLocationService];
     }
 }

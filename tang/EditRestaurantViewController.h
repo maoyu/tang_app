@@ -20,7 +20,7 @@ typedef enum  {
     EditModeUpdate = 1
 }EditMode;
 
-@interface EditRestaurantViewController : UITableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,LocationManagerDelegate,EditImagesCellDelegate,EditRestaurantNameDelegate,EditRestaurantTypeDelegate,EditRestaurantAddressDelegate,EditRestaurantCountyDelegate>
+@interface EditRestaurantViewController : UITableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,LocationManagerDelegate,EditImagesCellDelegate,EditRestaurantNameDelegate,EditRestaurantTypeDelegate,EditRestaurantAddressDelegate,EditRestaurantCountyDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, strong) Restaurant * restaurnt;
 @property (nonatomic) EditMode editMode;

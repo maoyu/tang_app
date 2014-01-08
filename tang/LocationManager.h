@@ -27,4 +27,6 @@
 - (void)startStandardLocationServcie;
 - (void)stopStandardLocationService;
 
+- (void)getPlacemarks:(CLLocation *)location;
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791F0DFD187D261200C9672E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791F0DFC187D261200C9672E /* AssetsLibrary.framework */; };
 		797BBC87187696C6002C510D /* EditRestaurantAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797BBC85187696C6002C510D /* EditRestaurantAddressController.m */; };
 		797BBC88187696C6002C510D /* EditRestaurantAddressController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797BBC86187696C6002C510D /* EditRestaurantAddressController.xib */; };
 		797BBC8C18769E6A002C510D /* EditRestaurantNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797BBC8A18769E6A002C510D /* EditRestaurantNameController.m */; };
@@ -87,6 +88,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		791F0DFC187D261200C9672E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		797BBC84187696C5002C510D /* EditRestaurantAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditRestaurantAddressController.h; sourceTree = "<group>"; };
 		797BBC85187696C6002C510D /* EditRestaurantAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditRestaurantAddressController.m; sourceTree = "<group>"; };
 		797BBC86187696C6002C510D /* EditRestaurantAddressController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditRestaurantAddressController.xib; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				791F0DFD187D261200C9672E /* AssetsLibrary.framework in Frameworks */,
 				7984319B185EDD7C00BDC384 /* libz.dylib in Frameworks */,
 				79843195185EDC5100BDC384 /* CFNetwork.framework in Frameworks */,
 				79843124185ED66D00BDC384 /* CoreGraphics.framework in Frameworks */,
@@ -259,6 +262,7 @@
 		79843120185ED66D00BDC384 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				791F0DFC187D261200C9672E /* AssetsLibrary.framework */,
 				7984319A185EDD7C00BDC384 /* libz.dylib */,
 				79843198185EDD2C00BDC384 /* MobileCoreServices.framework */,
 				79843196185EDD1300BDC384 /* SystemConfiguration.framework */,
